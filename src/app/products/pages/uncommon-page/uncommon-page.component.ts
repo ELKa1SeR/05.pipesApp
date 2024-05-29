@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FieldsetModule } from 'primeng/fieldset';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-uncommon-page',
@@ -32,6 +33,23 @@ export class UncommonPageComponent {
   deleteClient():void{
     this.clients.shift();
   }
+
+  // KeyValue Pipe
+  public person = {
+    name: 'Fernando',
+    age: 36,
+    address: 'Ottawa, Canada'
+  }
+
+  // Async Pipe
+  public myObservableTimer = interval(2000);
+
+  public promiseValue: Promise<string> = new Promise( (resolve, reject) =>{
+    setTimeout(() => {
+      resolve( 'Tenemos data en la promesa.' );
+      this.person.name
+    }, 3500);
+  })
 
 
 }
